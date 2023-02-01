@@ -1,15 +1,22 @@
 package com.example.workout.ui
 
+import android.content.ContentValues.TAG
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.workout.R
 import com.example.workout.common.Constants
 import com.example.workout.databinding.ActivityExerciseBinding
 import com.example.workout.model.ExerciseModel
+import java.util.*
 
-class ExerciseActivity : AppCompatActivity() {
+class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
    private val binding by lazy { ActivityExerciseBinding.inflate(layoutInflater) }
 
@@ -21,6 +28,9 @@ class ExerciseActivity : AppCompatActivity() {
 
    private var exerciseList: ArrayList<ExerciseModel>? = null
    private var currentExercisePosition = -1
+
+   private var tts: TextToSpeech? = null
+   private var player: MediaPlayer? = null
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -34,6 +44,8 @@ class ExerciseActivity : AppCompatActivity() {
 
       exerciseList = Constants.defaultExerciseList()
 
+      tts = TextToSpeech(this, this)
+
       binding.toolbarExercise.setNavigationOnClickListener {
          onBackPressed()
       }
@@ -43,6 +55,16 @@ class ExerciseActivity : AppCompatActivity() {
 
    private fun setupStartRestView() {
 
+      try {
+         val soundURI = Uri
+            .parse("android.resource://com.example.workout/" + R.raw.press_start)
+         player = MediaPlayer.create(applicationContext,soundURI)
+         player?.isLooping = false
+         player?.start()
+      }catch (e: Exception){
+         e.printStackTrace()
+      }
+
       binding.apply {
          flExerciseView.visibility = View.INVISIBLE
          ivImage.visibility = View.INVISIBLE
@@ -50,8 +72,13 @@ class ExerciseActivity : AppCompatActivity() {
 
          titleTv.visibility = View.VISIBLE
          flStartRestView.visibility = View.VISIBLE
+
+         upcomingExerciseNameTv.visibility = View.VISIBLE
+         upcomingExerciseLabelTv.visibility = View.VISIBLE
+         upcomingExerciseLabelTv.text = exerciseList!![currentExercisePosition + 1].getName()
       }
 
+      speakUot(exerciseList!![currentExercisePosition + 1].getName())
 
       if (restTimer != null) {
          restTimer?.cancel()
@@ -83,12 +110,14 @@ class ExerciseActivity : AppCompatActivity() {
 
       binding.apply {
          titleTv.visibility = View.INVISIBLE
-         titleTv.text = "Exercise Name ...."
          flStartRestView.visibility = View.INVISIBLE
 
          ivImage.visibility = View.VISIBLE
          exerciseNameTv.visibility = View.VISIBLE
          flExerciseView.visibility = View.VISIBLE
+
+         upcomingExerciseNameTv.visibility = View.INVISIBLE
+         upcomingExerciseLabelTv.visibility = View.INVISIBLE
       }
 
 
@@ -96,6 +125,7 @@ class ExerciseActivity : AppCompatActivity() {
          exerciseTimer?.cancel()
          exerciseProgress = 0
       }
+      speakUot(exerciseList!![currentExercisePosition].getName())
 
       binding.ivImage.setImageResource(exerciseList!![currentExercisePosition].getImage())
       binding.exerciseNameTv.text = exerciseList!![currentExercisePosition].getName()
@@ -125,6 +155,24 @@ class ExerciseActivity : AppCompatActivity() {
       }.start()
    }
 
+   override fun onInit(status: Int) {
+      val locale = Locale("ru")
+     // locale.language
+      if(status == TextToSpeech.SUCCESS){
+         val result = tts?.setLanguage(locale)
+
+         if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+            Log.e(TAG, "onInit: The language specified is not supported!", )
+         }
+      }else{
+         Log.e(TAG, "TTS: Initialization failed!", )
+      }
+   }
+
+   private fun speakUot(text: String) {
+      tts!!.speak(text, TextToSpeech.QUEUE_ADD, null, "")
+   }
+
    override fun onDestroy() {
       super.onDestroy()
 
@@ -132,9 +180,19 @@ class ExerciseActivity : AppCompatActivity() {
          restTimer?.cancel()
          restProgress = 0
       }
+
       if (exerciseTimer != null) {
          exerciseTimer?.cancel()
          exerciseProgress = 0
+      }
+
+      if (tts != null){
+         tts!!.stop()
+         tts!!.shutdown()
+      }
+
+      if(player != null){
+         player!!.stop()
       }
    }
 }

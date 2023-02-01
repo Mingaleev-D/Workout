@@ -19,12 +19,13 @@
         android:id="@+id/titleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/arlrdbd"
         android:text="Get ready for"
         android:textColor="@color/purple_700"
-        android:visibility="visible"
         android:textSize="@dimen/default_btn_text_size"
         android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@id/flStartRestView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -33,7 +34,6 @@
         android:id="@+id/flStartRestView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/item_circular_color_accent_border"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,6 +75,36 @@
 
     </FrameLayout>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/upcomingExerciseNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arial_rounded_mt_regular"
+        android:text="Upcoming exercise:"
+        android:layout_marginTop="16dp"
+        android:textColor="#4E4D4D"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flStartRestView" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/upcomingExerciseLabelTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arlrdbd"
+        android:text="@string/upcoming_exercise"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upcomingExerciseNameTv" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
@@ -95,7 +125,7 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivImage" />
