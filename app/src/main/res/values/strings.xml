@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Workout</string>
+    <string name="start_image">start image</string>
+    <string name="upcoming_exercise">Upcoming exercise:</string>
+    <string name="finish">FINISH</string>
+    <string name="you_have_finished_the_workout">You have finished the workout!</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="end">END</string>
 </resources>
