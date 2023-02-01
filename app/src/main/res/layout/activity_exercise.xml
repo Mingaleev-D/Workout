@@ -12,8 +12,8 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@drawable/toolbar_bg"
         android:theme="@style/ToolbarTheme"
-        app:titleTextColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/titleTv"
@@ -22,18 +22,20 @@
         android:fontFamily="@font/arlrdbd"
         android:text="Get ready for"
         android:textColor="@color/purple_700"
+        android:visibility="visible"
         android:textSize="@dimen/default_btn_text_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/flProgressBar"
+        app:layout_constraintBottom_toTopOf="@id/flStartRestView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
-        android:id="@+id/flProgressBar"
+        android:id="@+id/flStartRestView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/item_circular_color_accent_border"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,17 +75,43 @@
 
     </FrameLayout>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/jumping_jacks"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/exerciseNameTv"
+        app:layout_constraintTop_toBottomOf="@id/toolbarExercise" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/exerciseNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arlrdbd"
+        android:text="ExerciseName"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
+
+
     <FrameLayout
         android:id="@+id/flExerciseView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
         android:background="@drawable/item_circular_color_accent_border"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExercise">
+        app:layout_constraintTop_toBottomOf="@id/ivImage"
+        app:layout_constraintVertical_bias="0.43">
 
         <ProgressBar
             android:id="@+id/progressbarEx"
