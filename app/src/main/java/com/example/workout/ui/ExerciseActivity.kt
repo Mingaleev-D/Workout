@@ -1,19 +1,26 @@
-package com.example.workout
+package com.example.workout.ui
 
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.workout.common.Constants
 import com.example.workout.databinding.ActivityExerciseBinding
+import com.example.workout.model.ExerciseModel
 import com.google.android.material.snackbar.Snackbar
 
 class ExerciseActivity : AppCompatActivity() {
 
    private val binding by lazy { ActivityExerciseBinding.inflate(layoutInflater) }
+
    private var restTimer:CountDownTimer? = null
    private var restProgress = 0
+
    private var exerciseTimer:CountDownTimer? = null
    private var exerciseProgress = 0
+
+   private var exerciseList: ArrayList<ExerciseModel>? = null
+   private var currentExercisePosition = -1
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -24,6 +31,8 @@ class ExerciseActivity : AppCompatActivity() {
       if(supportActionBar != null){
          supportActionBar?.setDisplayHomeAsUpEnabled(true)
       }
+
+      exerciseList = Constants.defaultExerciseList()
 
       binding.toolbarExercise.setNavigationOnClickListener {
          onBackPressed()
@@ -51,7 +60,7 @@ class ExerciseActivity : AppCompatActivity() {
          }
 
          override fun onFinish() {
-           // Snackbar.make(binding.root,"Here now we will start the exercise",Snackbar.LENGTH_LONG).show()
+            currentExercisePosition++
             setupExerciseView()
          }
 

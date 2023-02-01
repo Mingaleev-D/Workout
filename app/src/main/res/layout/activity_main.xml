@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/light_green"
     android:padding="@dimen/main_screen_main_layout_padding"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/myImageView"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:src="@drawable/workout"
+        android:src="@drawable/images"
+        android:scaleType="fitXY"
         android:contentDescription="@string/start_image"
         app:layout_constraintBaseline_toTopOf="@+id/flStart"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,20 +22,21 @@
         android:id="@+id/flStart"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/item_color_accent_border_ripple_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/item_color_accent_border_ripple_background"
         app:layout_constraintTop_toBottomOf="@+id/myImageView">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="START"
             android:layout_gravity="center"
+            android:fontFamily="@font/arlrdbd"
+            android:text="START"
             android:textColor="@color/black"
             android:textSize="@dimen/default_btn_text_size"
-            android:textStyle="bold"
-            android:fontFamily="@font/arlrdbd"/>
+            android:textStyle="bold" />
 
     </FrameLayout>
 

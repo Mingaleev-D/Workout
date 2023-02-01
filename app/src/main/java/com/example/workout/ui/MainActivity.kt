@@ -1,4 +1,4 @@
-package com.example.workout
+package com.example.workout.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
       setContentView(binding.root)
       
       binding.flStart.setOnClickListener {
-         val intent = Intent(this,ExerciseActivity::class.java)
+         val intent = Intent(this, ExerciseActivity::class.java)
          startActivity(intent)
 
       }
