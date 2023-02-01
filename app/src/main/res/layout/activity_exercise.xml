@@ -177,14 +177,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvExercise"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
-        tools:listitem="@layout/item_exercise_status"
-        tools:itemCount="10"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:itemCount="12"
+        tools:listitem="@layout/item_exercise_status" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

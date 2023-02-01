@@ -14,6 +14,7 @@ import com.example.workout.R
 import com.example.workout.common.Constants
 import com.example.workout.databinding.ActivityExerciseBinding
 import com.example.workout.model.ExerciseModel
+import com.example.workout.ui.adapter.ExerciseStatusAdapter
 import java.util.*
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -22,15 +23,19 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
    private var restTimer: CountDownTimer? = null
    private var restProgress = 0
+   private var restTimerDuration:Long = 1
 
    private var exerciseTimer: CountDownTimer? = null
    private var exerciseProgress = 0
+   private var exerciseTimerDuration:Long = 1
 
    private var exerciseList: ArrayList<ExerciseModel>? = null
    private var currentExercisePosition = -1
 
    private var tts: TextToSpeech? = null
    private var player: MediaPlayer? = null
+
+   private var exerciseAdapter:ExerciseStatusAdapter? = null
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -51,6 +56,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
       }
 
       setupStartRestView()
+
+      setupStatusRecyclerView()
    }
 
    private fun setupStartRestView() {
@@ -91,7 +98,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
    private fun setRestProgressBar() {
       binding.progressbar.progress = restProgress
 
-      restTimer = object : CountDownTimer(2_000, 1000) {
+      restTimer = object : CountDownTimer(restTimerDuration * 2_000, 1000) {
          override fun onTick(millisUntilFinished: Long) {
             restProgress++
             binding.progressbar.progress = 5 - restProgress
@@ -100,6 +107,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
          override fun onFinish() {
             currentExercisePosition++
+
+            exerciseList!![currentExercisePosition].setIsSelected(true)
+            exerciseAdapter!!.notifyDataSetChanged()
+
             setupStartExerciseView()
          }
 
@@ -125,7 +136,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
          exerciseTimer?.cancel()
          exerciseProgress = 0
       }
-      speakUot(exerciseList!![currentExercisePosition].getName())
+      speakUot("Начинаем ${exerciseList!![currentExercisePosition].getName()}")
 
       binding.ivImage.setImageResource(exerciseList!![currentExercisePosition].getImage())
       binding.exerciseNameTv.text = exerciseList!![currentExercisePosition].getName()
@@ -136,7 +147,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
    private fun setExerciseProgressBar() {
       binding.progressbarEx.progress = exerciseProgress
 
-      exerciseTimer = object : CountDownTimer(6_000, 1000) {
+      exerciseTimer = object : CountDownTimer(exerciseTimerDuration * 6_000, 1000) {
          override fun onTick(millisUntilFinished: Long) {
             exerciseProgress++
             binding.progressbarEx.progress = 30 - exerciseProgress
@@ -144,6 +155,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
          }
 
          override fun onFinish() {
+
+            exerciseList!![currentExercisePosition].setIsSelected(false)
+            exerciseList!![currentExercisePosition].setIsCompleted(true)
+            exerciseAdapter!!.notifyDataSetChanged()
+
             if (currentExercisePosition < exerciseList?.size!! - 1) {
                setupStartRestView()
             } else {
@@ -153,6 +169,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
          }
 
       }.start()
+   }
+   private fun setupStatusRecyclerView(){
+      exerciseAdapter = ExerciseStatusAdapter(exerciseList!!)
+      binding.rvExercise.adapter = exerciseAdapter
    }
 
    override fun onInit(status: Int) {

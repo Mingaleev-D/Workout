@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_green"
+    tools:context=".ui.FinishActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/toolbar_bg"
+        app:titleTextColor="@color/white"
+        android:id="@+id/toolbar_finish_activity" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/end"
+        android:fontFamily="@font/arlrdbd"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="35sp"
+        android:id="@+id/end_tv"/>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:background="@drawable/item_circular_color_accent_border">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="done image"
+            android:src="@drawable/baseline_done_24"/>
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/congratulations"
+        android:fontFamily="@font/arlrdbd"
+        android:textSize="18sp"
+        android:textColor="#212121"
+        android:layout_marginTop="25dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/you_have_finished_the_workout"
+        android:fontFamily="@font/arlrdbd"
+        android:textSize="18sp"
+        android:textColor="#212121"
+        android:layout_marginTop="5dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/purple_500"
+        android:text="@string/finish"
+        android:paddingStart="26dp"
+        android:paddingEnd="26dp"
+        android:fontFamily="@font/arlrdbd"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/finish_btn"/>
+
+</LinearLayout>

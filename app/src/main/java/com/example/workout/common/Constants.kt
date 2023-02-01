@@ -9,84 +9,84 @@ object Constants {
       val exerciseList = ArrayList<ExerciseModel>()
 
       val jumpingJacks = ExerciseModel(1,
-          "Jumping Jacks",
+          "Прыжки с махами",
           R.drawable.jumping_jacks,
           false,
           false)
       exerciseList.add(jumpingJacks)
 
       val wallSit = ExerciseModel(2,
-          "Wall Sit",
+          "Воздушный стул",
           R.drawable.wall_sit,
           false,
           false)
       exerciseList.add(wallSit)
 
       val pushUp = ExerciseModel(3,
-          "Push Ups",
+          "Отжимания",
           R.drawable.pushups,
           false,
           false)
       exerciseList.add(pushUp)
 
       val abCrunch = ExerciseModel(4,
-          "Abdominal Crunch",
+          "Упражнения на пресс",
           R.drawable.ab_crunch,
           false,
           false)
       exerciseList.add(abCrunch)
 
       val stepUp = ExerciseModel(5,
-          "Step-Up Onto Chair",
+          "Шаг вверх на стул",
           R.drawable.stepup,
           false,
           false)
       exerciseList.add(stepUp)
 
       val squat = ExerciseModel(6,
-          "Squat",
+          "Приседание",
           R.drawable.squat,
           false,
           false)
       exerciseList.add(squat)
 
       val tricepsDip = ExerciseModel(7,
-          "Triceps Dip On Chair",
+          "Отжимания на трицепс на стуле",
           R.drawable.triceps_dip,
           false,
           false)
       exerciseList.add(tricepsDip)
 
       val plank = ExerciseModel(8,
-          "Plank",
+          "Планка",
           R.drawable.plank,
           false,
           false)
       exerciseList.add(plank)
 
       val highKnees = ExerciseModel(9,
-          "High Knees Running In Place",
+          "Бег на месте с высокими коленями",
           R.drawable.high_knees,
           false,
           false)
       exerciseList.add(highKnees)
 
       val lunge = ExerciseModel(10,
-          "Lunges",
+          "Выпады вперед",
           R.drawable.lunge,
           false,
           false)
       exerciseList.add(lunge)
 
       val pushUpAndRotation = ExerciseModel(11,
-          "Push ups And Rotation",
+          "Отжимания с вращением",
           R.drawable.pushup_and_rotation,
           false,
           false)
       exerciseList.add(pushUpAndRotation)
 
       val sidePlank = ExerciseModel(12,
-          "Side Plank",
+          "Боковая планка",
           R.drawable.side_plank,
           false,
           false)
