@@ -11,4 +11,5 @@
     <color name="light_green">#e8ffff</color>
     <color name="light_gray">#A5A5A5</color>
     <color name="toolbar_color_control_normal">#252525</color>
+    <color name="red">#EC0909</color>
 </resources>
