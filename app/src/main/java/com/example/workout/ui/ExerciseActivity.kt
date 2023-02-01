@@ -78,7 +78,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
          upcomingExerciseLabelTv.text = exerciseList!![currentExercisePosition + 1].getName()
       }
 
-      speakUot(exerciseList!![currentExercisePosition + 1].getName())
+      speakUot("Приготовся следующее упражнение ${exerciseList!![currentExercisePosition + 1].getName()}")
 
       if (restTimer != null) {
          restTimer?.cancel()
@@ -157,7 +157,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
    override fun onInit(status: Int) {
       val locale = Locale("ru")
-     // locale.language
       if(status == TextToSpeech.SUCCESS){
          val result = tts?.setLanguage(locale)
 

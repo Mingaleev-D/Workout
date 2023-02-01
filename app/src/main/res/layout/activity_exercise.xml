@@ -79,9 +79,9 @@
         android:id="@+id/upcomingExerciseNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/arial_rounded_mt_regular"
         android:text="Upcoming exercise:"
-        android:layout_marginTop="16dp"
         android:textColor="#4E4D4D"
         android:textSize="22sp"
         android:textStyle="normal"
@@ -94,9 +94,9 @@
         android:id="@+id/upcomingExerciseLabelTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/arlrdbd"
         android:text="@string/upcoming_exercise"
-        android:layout_marginTop="12dp"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -119,9 +119,9 @@
         android:id="@+id/exerciseNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/arlrdbd"
         android:text="ExerciseName"
-        android:layout_marginTop="16dp"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -173,8 +173,18 @@
                 android:textSize="26sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
-
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:orientation="horizontal"
+        tools:listitem="@layout/item_exercise_status"
+        tools:itemCount="10"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
