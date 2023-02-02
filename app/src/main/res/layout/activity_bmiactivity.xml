@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.BMIActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_bmi_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/toolbar_bg"
+        app:title="Калькулятор BMI"
+        app:titleTextColor="@color/white" />
+
+    <RadioGroup
+        android:id="@+id/units_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_bmi_activity"
+        android:layout_margin="14dp"
+        android:background="@drawable/radio_group_tab_background"
+        android:orientation="horizontal">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/metric_unit_rb"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/units_tab_selector"
+            android:button="@null"
+            android:checked="true"
+            android:fontFamily="@font/arlrdbd"
+            android:gravity="center"
+            android:text="МЕТРИЧЕСКИЕ ЕД."
+            android:textColor="@drawable/units_tab_text_color_selector"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/us_unit_rb"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/units_tab_selector"
+            android:button="@null"
+            android:checked="false"
+            android:fontFamily="@font/arlrdbd"
+            android:gravity="center"
+            android:text="ЕДИНИЦЫ США"
+            android:textColor="@drawable/units_tab_text_color_selector"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/units_view_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/units_rg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/metric_units_view_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- WEIGHT METRIC -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/metric_unit_weight_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/metric_unit_weight_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arial_rounded_mt_regular"
+                    android:hint="ВЕС (в кг)"
+                    android:inputType="numberDecimal"
+                    android:outlineSpotShadowColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- HEIGHT METRIC -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/metric_unit_height_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/metric_unit_height_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/arial_rounded_mt_regular"
+                    android:hint="РОСТ (в см)"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <!-- US UNITS -->
+        <LinearLayout
+            android:id="@+id/us_units_view_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- WEIGHT US -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/us_unit_weight_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/us_unit_weight_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arial_rounded_mt_regular"
+                    android:hint="МАССА (в кг)"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- HEIGHT US LinearLayout -->
+            <LinearLayout
+                android:id="@+id/us_units_height_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+                <!-- Feet -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/us_unit_height_feet_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/us_unit_height_feet_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arial_rounded_mt_regular"
+                        android:hint="Фут"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <!-- INCH -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/us_unit_height_inch_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/us_unit_height_inch_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arial_rounded_mt_regular"
+                        android:hint="Дюйм"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- BMI DETAILS -->
+        <LinearLayout
+            android:id="@+id/display_bmi_result_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/your_bmi_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arlrdbd"
+                android:gravity="center"
+                android:text="ВАШ BMI"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/bmi_result_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/arlrdbd"
+                android:gravity="center"
+                android:text="15.00"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="15.00" />
+
+            <TextView
+                android:id="@+id/bmi_type_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/arial_rounded_mt_regular"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                tools:text="Normal" />
+
+            <TextView
+                android:id="@+id/bmi_description_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/arial_rounded_mt_regular"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                tools:text="Normal" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calculate_units_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="35dp"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/arlrdbd"
+            android:text="Рассчитать"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

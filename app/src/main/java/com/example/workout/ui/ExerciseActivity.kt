@@ -108,7 +108,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
          upcomingExerciseLabelTv.text = exerciseList!![currentExercisePosition + 1].getName()
       }
 
-      speakUot("Приготовся следующее упражнение ${exerciseList!![currentExercisePosition + 1].getName()}")
+      speakUot("Приготовся предстоящее упражнение ${exerciseList!![currentExercisePosition + 1].getName()}")
 
       if (restTimer != null) {
          restTimer?.cancel()

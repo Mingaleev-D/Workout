@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="@string/end"
+        android:text="Закончили!"
         android:fontFamily="@font/arlrdbd"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="35sp"
@@ -44,18 +44,18 @@
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/congratulations"
+        android:text="Позравляем!"
         android:fontFamily="@font/arlrdbd"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textColor="#212121"
         android:layout_marginTop="25dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/you_have_finished_the_workout"
+        android:text="Вы, закончили тренеровку"
         android:fontFamily="@font/arlrdbd"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textColor="#212121"
         android:layout_marginTop="5dp"/>
 
@@ -66,7 +66,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:background="@color/purple_500"
-        android:text="@string/finish"
+        android:text="Вернуться на старт"
         android:paddingStart="26dp"
         android:paddingEnd="26dp"
         android:fontFamily="@font/arlrdbd"
