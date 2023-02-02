@@ -9,6 +9,7 @@
     </queries>
 
     <application
+        android:name=".core.WorkOutApp"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,15 +19,23 @@
         android:theme="@style/Theme.Workout"
         tools:targetApi="31">
         <activity
-            android:name=".ui.FinishActivity"
+            android:name=".ui.activity.HistoryActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".ui.ExerciseActivity"
+            android:name=".ui.activity.BMIActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.FinishActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ExerciseActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

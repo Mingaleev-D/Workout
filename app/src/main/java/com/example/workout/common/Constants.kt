@@ -1,7 +1,7 @@
 package com.example.workout.common
 
 import com.example.workout.R
-import com.example.workout.model.ExerciseModel
+import com.example.workout.data.model.ExerciseModel
 
 object Constants {
 

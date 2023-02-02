@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@color/light_green"
+    android:padding="16dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Уверены ли вы?"
+        android:fontFamily="@font/arlrdbd"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/arial_rounded_mt_regular"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="#212121"
+        android:textSize="16sp"
+        android:text="Это остановит вашу тренировку. Вы уверены, что хотите бросить??"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="ДА"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:id="@+id/yes_btn"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="НЕТ"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:id="@+id/no_btn"/>
+    </LinearLayout>
+</LinearLayout>
