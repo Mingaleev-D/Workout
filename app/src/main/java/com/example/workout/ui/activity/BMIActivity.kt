@@ -1,4 +1,4 @@
-package com.example.workout.ui
+package com.example.workout.ui.activity
 
 import android.os.Bundle
 import android.view.View

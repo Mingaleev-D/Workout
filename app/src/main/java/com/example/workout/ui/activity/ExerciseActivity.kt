@@ -1,4 +1,4 @@
-package com.example.workout.ui
+package com.example.workout.ui.activity
 
 import android.app.Dialog
 import android.content.ContentValues.TAG
@@ -13,9 +13,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.workout.R
 import com.example.workout.common.Constants
+import com.example.workout.data.model.ExerciseModel
 import com.example.workout.databinding.ActivityExerciseBinding
 import com.example.workout.databinding.DialogCustomBackConfirmationBinding
-import com.example.workout.model.ExerciseModel
 import com.example.workout.ui.adapter.ExerciseStatusAdapter
 import java.util.*
 
@@ -121,7 +121,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
    private fun setRestProgressBar() {
       binding.progressbar.progress = restProgress
 
-      restTimer = object : CountDownTimer(restTimerDuration * 1_000, 1000) {
+      restTimer = object : CountDownTimer(restTimerDuration * 5_000, 1000) {
          override fun onTick(millisUntilFinished: Long) {
             restProgress++
             binding.progressbar.progress = 5 - restProgress
@@ -170,7 +170,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
    private fun setExerciseProgressBar() {
       binding.progressbarEx.progress = exerciseProgress
 
-      exerciseTimer = object : CountDownTimer(exerciseTimerDuration * 2_000, 1000) {
+      exerciseTimer = object : CountDownTimer(exerciseTimerDuration * 30_000, 1000) {
          override fun onTick(millisUntilFinished: Long) {
             exerciseProgress++
             binding.progressbarEx.progress = 30 - exerciseProgress

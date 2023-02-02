@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.workout.R
 import com.example.workout.databinding.ItemExerciseStatusBinding
-import com.example.workout.model.ExerciseModel
+import com.example.workout.data.model.ExerciseModel
 
 /**
  * @author : Mingaleev D

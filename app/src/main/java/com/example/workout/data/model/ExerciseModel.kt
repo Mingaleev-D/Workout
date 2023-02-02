@@ -1,4 +1,4 @@
-package com.example.workout.model
+package com.example.workout.data.model
 
 class ExerciseModel(
     private var id: Int,
