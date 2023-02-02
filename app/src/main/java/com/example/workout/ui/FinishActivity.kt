@@ -11,5 +11,17 @@ class FinishActivity : AppCompatActivity() {
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       setContentView(binding.root)
+
+      setSupportActionBar(binding.toolbarFinishActivity)
+
+      if (supportActionBar != null) {
+         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+      }
+      binding.toolbarFinishActivity.setNavigationOnClickListener {
+         onBackPressed()
+      }
+      binding.finishBtn.setOnClickListener {
+         finish()
+      }
    }
 }
