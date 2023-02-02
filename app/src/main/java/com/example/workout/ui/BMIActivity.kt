@@ -34,9 +34,9 @@ class BMIActivity : AppCompatActivity() {
 
       makeVisibleMetricUnitsView()
       binding.unitsRg.setOnCheckedChangeListener { _, checkedId ->
-         if(checkedId == R.id.metric_unit_rb){
+         if (checkedId == R.id.metric_unit_rb) {
             makeVisibleMetricUnitsView()
-         }else
+         } else
             makeVisibleUSUnitsView()
       }
 
@@ -49,6 +49,10 @@ class BMIActivity : AppCompatActivity() {
          } else {
             Snackbar.make(binding.root, "Пожалуйста, введите данные", Snackbar.LENGTH_LONG).show()
          }
+      }
+
+      binding.calculateUnitsBtn.setOnClickListener {
+         calculateUnits()
       }
    }
 
@@ -65,6 +69,7 @@ class BMIActivity : AppCompatActivity() {
          displayBmiResultLl.visibility = View.INVISIBLE
       }
    }
+
    private fun makeVisibleUSUnitsView() {
       currentVisibleView = US_UNITS_VIEW
       binding.apply {
@@ -126,6 +131,50 @@ class BMIActivity : AppCompatActivity() {
       }
       return isValue
 
+   }
+
+   private fun calculateUnits() {
+      if (currentVisibleView == METRIC_UNITS_VIEW) {
+         if (validateMetricUnits()) {
+            val heightValue: Float = binding.metricUnitHeightEt.text.toString().toFloat() / 100
+            val weightValue: Float = binding.metricUnitWeightEt.text.toString().toFloat()
+            val bmi = weightValue / (heightValue * heightValue)
+            displayBMIResult(bmi)
+         } else {
+            Snackbar.make(binding.root, "Пожалуйста, введите данные", Snackbar.LENGTH_LONG).show()
+         }
+      } else {
+         if (validateUSUnits()) {
+            val usUnitWeighValueFeet = binding.usUnitWeightEt.text.toString()
+            val usUnitHeightValueFeet = binding.usUnitHeightFeetEt.text.toString().toFloat()
+            val usUnitHeightValueInch = binding.usUnitHeightInchEt.text.toString()
+
+            val heightValue = usUnitHeightValueInch.toFloat() + usUnitWeighValueFeet.toFloat() * 12
+
+            val bmi = 703 * (usUnitHeightValueFeet / (heightValue * heightValue))
+
+            displayBMIResult(bmi)
+         }else {
+            Snackbar.make(binding.root, "Пожалуйста, введите данные", Snackbar.LENGTH_LONG).show()
+         }
+      }
+   }
+
+   private fun validateUSUnits(): Boolean {
+      var isValue = true
+
+      when {
+         binding.usUnitWeightEt.text.toString().isEmpty()     -> {
+            isValue = false
+         }
+         binding.usUnitHeightFeetEt.text.toString().isEmpty() -> {
+            isValue = false
+         }
+         binding.usUnitHeightInchEt.text.toString().isEmpty() -> {
+            isValue = false
+         }
+      }
+      return isValue
 
    }
 }
